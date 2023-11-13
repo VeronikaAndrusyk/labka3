@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\AccountingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('accounting', AccountingController::class);
+//Секція Route::resource('accounting', 'AccountingController'); - цей
+// маршрут визначає RESTful-маршрут для ресурсу 'accounting'. Він
+// автоматично визначає маршрути для стандартних дій управління ресурсом,
+// таких як створення, отримання, оновлення та видалення.
