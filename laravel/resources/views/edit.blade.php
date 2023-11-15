@@ -31,6 +31,11 @@
 
     <button type="submit">Зберегти зміни</button>
 </form>
+    <form method="POST" action="{{ route('accounting.destroy', $accounting->id) }}">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Delete</button>
+</form>
 
 </body>
 </html>
