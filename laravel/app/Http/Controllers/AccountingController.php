@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Accounting;
+use Illuminate\Support\Facades\Auth;
 
 class AccountingController extends Controller
 {
@@ -35,6 +36,7 @@ class AccountingController extends Controller
         $accounting->salary = $request->salary;
         $accounting->children_count = $request->children_count;
         $accounting->experience = $request->experience;
+        $accounting->creator_id = Auth::id();
 
         $accounting->save();
 
@@ -87,8 +89,3 @@ class AccountingController extends Controller
         return redirect()->route('accounting.index');
     }
 }
-//Контролер відповідає за обробку запитів, валідацію даних,
-// взаємодію з моделлю та відображення відповідних видів для
-// користувача. Він дозволяє реалізувати основні функції CRUD
-// (створення, читання, оновлення, видалення) для моделі
-// 'Accounting' у вашому веб-додатку.

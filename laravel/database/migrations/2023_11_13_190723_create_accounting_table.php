@@ -14,6 +14,7 @@ class CreateAccountingTable extends Migration
      * @return void
      */
     public function up()
+        //Метод up викликається при виконанні міграції і відповідає за визначення структури таблиці 'accounting'.
         //Метод up() містить логіку для створення таблиці 'accounting' з наступними колонками:
     {
         Schema::create('accounting', function (Blueprint $table) {
@@ -25,14 +26,15 @@ class CreateAccountingTable extends Migration
             $table->integer('children_count');
             $table->integer('experience');
             $table->timestamps();
-            //автоматично додає колонки 'created_at' та 'updated_at',
-            // які відстежують дату створення та останнього оновлення запису відповідно.
+
         });
 
         // Додавання тестових даних
         //метод DB::table('accounting')->insert(...) для додавання тестових даних у таблицю.
         DB::table('accounting')->insert([
             [
+                //Тестові дані вставляються в таблицю 'accounting' за допомогою методу insert.
+                // Кожен набір даних є асоціативним масивом, що представляє рядок у таблиці.
                 'code' => '4681',
                 'name' => 'John Dot',
                 'position' => 'Accountant',
@@ -96,6 +98,7 @@ class CreateAccountingTable extends Migration
      * @return void
      */
     public function down()
+        //Метод down викликається при відкаті міграції. Він відповідає за відміну змін, внесених методом up.
         //Метод down() видаляє таблицю 'accounting' у випадку відкату міграції.
     {
         Schema::dropIfExists('accounting');
@@ -108,3 +111,10 @@ class CreateAccountingTable extends Migration
 // нових рядків в таблицю 'accounting' у базі даних. Кожен вставлений
 // рядок містить асоціативний масив зі значеннями для кожної колонки у
 // таблиці
+
+
+
+//DB::table('accounting')->insert(...) є частиною Будівника Запитів
+// Бази Даних Laravel і забезпечує зручний спосіб взаємодії з базою
+// даних без прямого використання моделей Eloquent. У цьому контексті
+// ця команда вставляє рядки в таблицю 'accounting'.

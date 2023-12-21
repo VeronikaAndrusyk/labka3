@@ -10,7 +10,7 @@ class Accounting extends Model
     use HasFactory;
 
     protected $table = 'accounting';
-
+//Вказує, що ця модель пов'язана з таблицею бази даних, яка має назву 'accounting'.
     /**
      * The attributes that are mass assignable.
      *
@@ -24,4 +24,7 @@ class Accounting extends Model
         'children_count',
         'experience'
     ];
-}
+}//
+//Вказує, які атрибути можуть бути масово призначені.
+// У цьому випадку дозволяє масово призначати значення для атрибутів
+// 'code', 'name', 'position', 'salary', 'children_count', та 'experience'.

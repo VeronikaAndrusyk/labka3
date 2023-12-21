@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <title>Редагування рахунку</title>
 </head>
@@ -31,7 +31,11 @@
 
     <button type="submit">Зберегти зміни</button>
 </form>
-
+<form method="POST" action="{{ route('accounting.destroy', $accounting->id) }}">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Delete</button>
+</form>
 </body>
 </html>
 {{--Ця сторінка дозволяє користувачеві змінити дані про рахунок, використовуючи

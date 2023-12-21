@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\AccountingController;
+use App\Http\Controllers\AccountingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,23 @@ use \App\Http\Controllers\AccountingController;
 |
 */
 
-Route::resource('accounting', AccountingController::class);
-//Секція Route::resource('accounting', 'AccountingController'); - цей
-// маршрут визначає RESTful-маршрут для ресурсу 'accounting'. Він
-// автоматично визначає маршрути для стандартних дій управління ресурсом,
-// таких як створення, отримання, оновлення та видалення.
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::resource('accounting', \App\Http\Controllers\AccountingController::class)
+    ->middleware('auth');
+
+Route::get('/accounting', [AccountingController::class, 'index'])
+    ->name('tournaments.index');
+require __DIR__.'/auth.php';
