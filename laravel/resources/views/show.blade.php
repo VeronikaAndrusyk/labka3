@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Інформація про рахунок</title>
+    <title>Інформація</title>
+
 </head>
-<body>
 
-<h1>Інформація про рахунок</h1>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
 
-<ul>
-    <li>
-        <strong>Код:</strong> {{ $account->code }}
-    </li>
-    <li>
-        <strong>Ім'я:</strong> {{ $account->name }}
-    </li>
-    <li>
-        <strong>Посада:</strong> {{ $account->position }}
-    </li>
-    <li>
-        <strong>Зарплата:</strong> {{ $account->salary }}
-    </li>
-    <li>
-        <strong>Кількість дітей:</strong> {{ $account->children_count }}
-    </li>
-    <li>
-        <strong>Досвід:</strong> {{ $account->experience }}
-    </li>
-</ul>
+<div class="bg-white p-8 rounded-md shadow-md max-w-md w-full">
+    <h1 class="text-2xl font-bold mb-6">Інформація про рахунок</h1>
+
+    <table class="table-auto w-full">
+        <tbody>
+        <tr>
+            <td class="border px-4 py-2"><strong>Код:</strong></td>
+            <td class="border px-4 py-2">{{ $account->code }}</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2"><strong>Ім'я:</strong></td>
+            <td class="border px-4 py-2">{{ $account->name }}</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2"><strong>Посада:</strong></td>
+            <td class="border px-4 py-2">{{ $account->position }}</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2"><strong>Зарплата:</strong></td>
+            <td class="border px-4 py-2">{{ $account->salary }}</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2"><strong>Кількість дітей:</strong></td>
+            <td class="border px-4 py-2">{{ $account->children_count }}</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2"><strong>Досвід:</strong></td>
+            <td class="border px-4 py-2">{{ $account->experience }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
+
 </html>

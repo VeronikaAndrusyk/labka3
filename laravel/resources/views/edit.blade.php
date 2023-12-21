@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <title>Редагування рахунку</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body>
 
-<h1>Редагування рахунку</h1>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
 
-<form action="/accounting/{{ $accounting->id }}" method="POST">
-    @method('PUT')
-    @csrf
+<div class="bg-white p-8 rounded-md shadow-md max-w-md w-full">
+    <h1 class="text-2xl font-bold mb-6">Редагування рахунку</h1>
 
-    <label for="code">Код:</label><br>
-    <input type="text" id="code" name="code" value="{{ $accounting->code }}"><br><br>
+    <form action="/accounting/{{ $accounting->id }}" method="POST" class="mb-8">
+        @method('PUT')
+        @csrf
 
-    <label for="name">Ім'я:</label><br>
-    <input type="text" id="name" name="name" value="{{ $accounting->name }}"><br><br>
+        <div class="mb-4">
+            <label for="code" class="text-gray-700 block">Код:</label>
+            <input type="text" id="code" name="code" value="{{ $accounting->code }}" class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500">
+        </div>
 
-    <label for="position">Посада:</label><br>
-    <input type="text" id="position" name="position" value="{{ $accounting->position }}"><br><br>
+        <div class="mb-4">
+            <label for="name" class="text-gray-700 block">Ім'я:</label>
+            <input type="text" id="name" name="name" value="{{ $accounting->name }}" class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500">
+        </div>
 
-    <label for="salary">Зарплата:</label><br>
-    <input type="text" id="salary" name="salary" value="{{ $accounting->salary }}"><br><br>
+        <div class="mb-4">
+            <label for="position" class="text-gray-700 block">Посада:</label>
+            <input type="text" id="position" name="position" value="{{ $accounting->position }}" class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500">
+        </div>
 
-    <label for="children_count">Кількість дітей:</label><br>
-    <input type="text" id="children_count" name="children_count" value="{{ $accounting->children_count }}"><br><br>
+        <div class="mb-4">
+            <label for="salary" class="text-gray-700 block">Зарплата:</label>
+            <input type="text" id="salary" name="salary" value="{{ $accounting->salary }}" class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500">
+        </div>
 
-    <label for="experience">Досвід:</label><br>
-    <input type="text" id="experience" name="experience" value="{{ $accounting->experience }}"><br><br>
+        <div class="mb-4">
+            <label for="children_count" class="text-gray-700 block">Кількість дітей:</label>
+            <input type="text" id="children_count" name="children_count" value="{{ $accounting->children_count }}" class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500">
+        </div>
 
-    <button type="submit">Зберегти зміни</button>
-</form>
-<form method="POST" action="{{ route('accounting.destroy', $accounting->id) }}">
-    @csrf
-    @method('DELETE')
-    <button type="submit">Delete</button>
-</form>
+        <div class="mb-4">
+            <label for="experience" class="text-gray-700 block">Досвід:</label>
+            <input type="text" id="experience" name="experience" value="{{ $accounting->experience }}" class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500">
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-700">Зберегти зміни</button>
+    </form>
+
+    <form method="POST" action="{{ route('accounting.destroy', $accounting->id) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-700">Delete</button>
+    </form>
+</div>
+
 </body>
+
 </html>
-{{--Ця сторінка дозволяє користувачеві змінити дані про рахунок, використовуючи
-//форму для введення оновлених значень для кожного поля рахунку. Після натискання
-//кнопки "Зберегти зміни" дані будуть відправлені на сервер для оновлення відповідного
-//запису рахунку.--}}
-
-
-
-
